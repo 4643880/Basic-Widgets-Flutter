@@ -14,27 +14,36 @@ class MyApp extends StatelessWidget {
           title: Text("List View"),
         ),
         body: Container(
-          child: ListView(
-            children: [
-              buildContainerTile(Colors.green),
-              buildContainerTile(Colors.red),
-              buildContainerTile(Colors.grey),
-              buildContainerTile(Colors.amber),
-              buildContainerTile(Colors.black),
-              buildContainerTile(Colors.deepOrange),
-            ],
+          child: ListView.builder(
+            itemCount: 20,
+              itemBuilder: (BuildContext context, int index){
+              return Container(
+                child: Column(
+                  children: [
+                    buildContainerTile(Colors.red),
+                    buildContainerTile(Colors.green),
+                    buildContainerTile(Colors.blue)
+                  ],
+                ),
+              );
+              }
           ),
         ),
       ),
     );
   }
 
-  Container buildContainerTile(Color color) {
-    return Container(
-              height: 200,
-              width: double.infinity,
-              color: color,
-            );
+  buildContainerTile(Color color) {
+    return Padding(
+      padding: const EdgeInsets.all(16.0),
+      child: Card(
+        child: Container(
+                  height: 100,
+                  width: double.infinity,
+                  color: color,
+                ),
+      ),
+    );
   }
 }
 
