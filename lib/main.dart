@@ -1,49 +1,32 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_widgets/pages/Home_Page.dart';
 
 void main() {
   runApp(MyApp());
 }
 
-class MyApp extends StatelessWidget {
 
+class MyApp extends StatefulWidget {
+  const MyApp({ Key? key }) : super(key: key);
+
+  @override
+  _MyAppState createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: Scaffold(
-        appBar: AppBar(
-          title: Text("List View"),
+      debugShowCheckedModeBanner: false,
+      home: SafeArea(
+        child: Scaffold(
+          appBar: AppBar(
+            title: Text("Home"),            
+             centerTitle: true, ),
+          body: MyHomePage(),
         ),
-        body: Container(
-          child: ListView.builder(
-            itemCount: 20,
-              itemBuilder: (BuildContext context, int index){
-              return Container(
-                child: Column(
-                  children: [
-                    buildContainerTile(Colors.red),
-                    buildContainerTile(Colors.green),
-                    buildContainerTile(Colors.blue)
-                  ],
-                ),
-              );
-              }
-          ),
-        ),
-      ),
-    );
-  }
-
-  buildContainerTile(Color color) {
-    return Padding(
-      padding: const EdgeInsets.all(16.0),
-      child: Card(
-        child: Container(
-                  height: 100,
-                  width: double.infinity,
-                  color: color,
-                ),
       ),
     );
   }
 }
-
