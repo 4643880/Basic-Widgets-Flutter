@@ -25,17 +25,66 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  double coverimg_height = 250;
-  double profileimg_height = 144;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(),
-      body:Container(
-        height: MediaQuery.of(context).size.height*.5,
-        width: MediaQuery.of(context).size.width*.5,
-        color: Colors.red,
+      body:Column(
+        children: [
+          abc(Colors.red),
+          abc(Colors.green),
+          abc(Colors.blue),
+          xyz(Colors.orange)
+        ],
       ),
     );
   }
+
+  Widget abc(Color color) {
+    return ListTile(
+          leading: CircleAvatar(
+            radius: 30,
+            backgroundImage: NetworkImage(
+            "https://cdn.pixabay.com/photo/2017/04/28/21/34/stylish-boy-2269500_960_720.jpg"
+          ),),
+          title: Text("Haider"),
+          subtitle: Text("Hey..."),
+          trailing: Column(
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: [
+              Text("4:30"),
+              CircleAvatar(
+                 child: Text("2", style: TextStyle(color: Colors.white),),
+            radius: 13,
+            backgroundColor: color),
+            ],
+          )
+
+        );
+  }
+}
+
+
+
+Widget xyz(Color color){
+  return ListTile(
+          leading: CircleAvatar(
+            radius: 30,
+            backgroundImage: NetworkImage(
+            "https://cdn.pixabay.com/photo/2017/04/28/21/34/stylish-boy-2269500_960_720.jpg"
+          ),),
+          title: Text("Haider"),
+          subtitle: Text("Hey..."),
+          trailing: Column(
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: [
+              Text("4:30"),
+              CircleAvatar(
+                child: Text("3", style: TextStyle(color: Colors.black),),
+            radius: 13,
+            backgroundColor: color),
+            ],
+          )
+
+        );
 }
