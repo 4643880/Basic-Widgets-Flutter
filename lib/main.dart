@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_widgets/pages/Home_Page.dart';
+import 'package:flutter_widgets/pages/practice.dart';
+import 'package:flutter_widgets/utils/routes.dart';
 
 void main() {
   runApp(MyApp());
@@ -27,6 +29,12 @@ class _MyAppState extends State<MyApp> {
           body: MyHomePage(),
         ),
       ),
+      
+      initialRoute: MyRoutes.practiceRoute,
+      routes: {
+        MyRoutes.homeRoute : (context) => MyHomePage(),
+        MyRoutes.practiceRoute : (context) => PracticePage(),
+      },
     );
   }
 }
