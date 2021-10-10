@@ -29,62 +29,35 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(),
-      body:Column(
-        children: [
-          abc(Colors.red),
-          abc(Colors.green),
-          abc(Colors.blue),
-          xyz(Colors.orange)
-        ],
-      ),
+      body: ListView(children: [
+        abc(Colors.lightBlue, "Blue", "This is demo Description"),
+        abc(Colors.lightGreen, "Green", "This is demo Description"),
+        abc(Colors.grey, "Grey", "This is demo Description"),
+        abc(Colors.red, "Red", "This is demo Description"),
+        abc(Colors.orange, "Red", "This is demo Description")
+      ],)
     );
   }
 
-  Widget abc(Color color) {
-    return ListTile(
-          leading: CircleAvatar(
-            radius: 30,
-            backgroundImage: NetworkImage(
-            "https://cdn.pixabay.com/photo/2017/04/28/21/34/stylish-boy-2269500_960_720.jpg"
-          ),),
-          title: Text("Haider"),
-          subtitle: Text("Hey..."),
-          trailing: Column(
-            mainAxisAlignment: MainAxisAlignment.end,
-            children: [
-              Text("4:30"),
-              CircleAvatar(
-                 child: Text("2", style: TextStyle(color: Colors.white),),
-            radius: 13,
-            backgroundColor: color),
-            ],
-          )
-
-        );
-  }
 }
 
-
-
-Widget xyz(Color color){
-  return ListTile(
-          leading: CircleAvatar(
-            radius: 30,
-            backgroundImage: NetworkImage(
-            "https://cdn.pixabay.com/photo/2017/04/28/21/34/stylish-boy-2269500_960_720.jpg"
-          ),),
-          title: Text("Haider"),
-          subtitle: Text("Hey..."),
-          trailing: Column(
-            mainAxisAlignment: MainAxisAlignment.end,
-            children: [
-              Text("4:30"),
-              CircleAvatar(
-                child: Text("3", style: TextStyle(color: Colors.black),),
-            radius: 13,
-            backgroundColor: color),
-            ],
-          )
-
+Widget abc(Color color, var name, var desc){
+  return Container(
+          color: color,
+          width: 100,
+           height: 150,
+           child: Row(
+             children: [
+               Padding(
+                 padding: const EdgeInsets.all(32.0),
+                 child: Column(
+                   mainAxisAlignment: MainAxisAlignment.spaceAround,
+                   children: [
+                   Text(name, style: TextStyle(fontSize: 30),),
+                   Text(desc, style: TextStyle(fontSize: 18),),
+                 ],),
+               )
+             ],             
+          ),
         );
 }
