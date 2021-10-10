@@ -1,5 +1,6 @@
 import 'dart:ui';
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
 
@@ -31,22 +32,38 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(),
-      body: Padding(
-        padding: const EdgeInsets.all(18.0),
-        child: GridView.count(
-          crossAxisCount: 2,
-          crossAxisSpacing: 18,
-          mainAxisSpacing: 18,
-          children: List.generate(mylist.length, (index) {
-            return Container(
-                height: 100,
-                width: 100,
-                color: Colors.lime,
-                child: Center(child: Text(mylist[index].toString(), style: TextStyle(fontSize: 30, color: Colors.white),)),
-                );            
-          })
+      drawer: Container(
+        child: Drawer(        
+          child: Container(
+            color: Colors.deepPurple,
+            child: ListView(children: [
+              UserAccountsDrawerHeader(
+                decoration: BoxDecoration(
+                  color: Colors.deepPurple
+                ),
+                currentAccountPicture: CircleAvatar(                  
+                  backgroundImage: NetworkImage("https://bit.ly/3ap5EX7"),
+                ),
+                accountName: Text("Your Account Name"),
+                accountEmail: Text("Email@gmail.com"),),
+                Divider(height: 2,thickness: 2,color: Colors.white,),
+               ListTile(
+              leading: Icon(CupertinoIcons.home, color: Colors.white,),
+              title: Text("Home", textScaleFactor: 1.3,  style: TextStyle(color: Colors.white,),),
+              ),
+            ListTile(
+            leading: Icon(CupertinoIcons.person, color: Colors.white,),
+            title: Text("My Account", textScaleFactor: 1.3,  style: TextStyle(color: Colors.white,),),
+            ),
+            ListTile(
+            leading: Icon(CupertinoIcons.settings, color: Colors.white,),
+            title: Text("Settings", textScaleFactor: 1.3,  style: TextStyle(color: Colors.white,),),
+            ),
+            ],),
           ),
-      )
+        ),
+      ),
+      
     );
   }
 
