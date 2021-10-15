@@ -4,8 +4,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_widgets/pages/Home_Page.dart';
 import 'package:flutter_widgets/pages/Text_Field.dart';
-import 'package:flutter_widgets/pages/login_page.dart';
-import 'package:flutter_widgets/pages/register_page.dart';
 import 'package:hexcolor/hexcolor.dart';
 
 class PracticePage  extends StatelessWidget {
@@ -29,34 +27,46 @@ class Home extends StatefulWidget {
   _HomeState createState() => _HomeState();
 }
 
-class _HomeState extends State<Home> {    
+class _HomeState extends State<Home> {   
+  var text = ""; 
+  var number = 0;
   @override
   Widget build(BuildContext context) {
-    return DefaultTabController(      
-      length: 2,
-       child: Scaffold(
-         backgroundColor: Colors.orange,
-         appBar: AppBar(
-           backgroundColor: Colors.lightGreen,
-           title: Center(child: Text("Login UI", style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),)),
-           bottom: TabBar(
-             unselectedLabelColor: Colors.red,
-             overlayColor: MaterialStateProperty.all(Colors.yellow),
-             labelColor: Colors.white,
-             indicatorColor: Colors.white,
-             isScrollable: false,
-             tabs: [
-             Tab(child: Text("Login"),),
-             Tab(child: Text("Register"),),            
-           ],),
-         ),     
-         body: TabBarView(
-           children: [
-             LoginPage(),
-             RegisterPage(),
-         ])  
-       ),
-       );
+    return Scaffold(
+      appBar: AppBar(title: Center(child: Text("Counter App")),),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text("Text : $text" , style: TextStyle(fontSize: 30,
+             fontWeight: FontWeight.bold),),
+             Text("Counter :  $number" , style: TextStyle(fontSize: 30,
+             fontWeight: FontWeight.bold),),
+            ElevatedButton(
+              onPressed: (){
+                setState(() {
+                  text = "1";
+                });
+              },
+               child: Text("Make 1")),
+            ElevatedButton(
+              onPressed: (){
+                setState(() {
+                  text = "2";
+                });
+              },
+               child: Text("Make 2")),
+               ElevatedButton(
+              onPressed: (){
+                setState(() {                 
+                  number = number + 1;
+                });
+              },
+               child: Text("Counter")),
+          ],
+        ),
+      ),
+    );
   }
 
 }
