@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_widgets/pages/Home_Page.dart';
 import 'package:flutter_widgets/pages/practice_page.dart';
 import 'package:flutter_widgets/utils/routes.dart';
 
@@ -26,13 +25,13 @@ class _MyAppState extends State<MyApp> {
           appBar: AppBar(
             title: Text("Home"),            
              centerTitle: true, ),
-          body: MyHomePage(),
+          // body: MyHomePage(),
         ),
       ),
       
       initialRoute: MyRoutes.practiceRoute,
       routes: {
-        MyRoutes.homeRoute : (context) => MyHomePage(),
+        // MyRoutes.homeRoute : (context) => MyHomePage(),
         MyRoutes.practiceRoute : (context) => PracticePage(),
       },
     );
