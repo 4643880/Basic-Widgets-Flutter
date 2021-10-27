@@ -1,4 +1,6 @@
 class MyRoutes {
   static String homeRoute = "/homeRouteee";
-  static String practiceRoute = "/practiceRouteeee";
+  static String loginRoute = "/loginRouteeee";
+  static String registerRoute = "/registerRouteee";
+  static String afterLoginRoute = "/registerRouteee";
 }
