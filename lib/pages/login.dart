@@ -12,12 +12,13 @@ class Login extends StatefulWidget {
 }
 
 class _LoginState extends State<Login> {
-  final TextEditingController emailController = TextEditingController(text: "ali@gmail.com");
+  final TextEditingController emailController =
+      TextEditingController(text: "ali@gmail.com");
 
-  final TextEditingController passwordController = TextEditingController(text: "asdfpassword");
+  final TextEditingController passwordController =
+      TextEditingController(text: "asdfpassword");
 
-  void loginFunc() async {   
-
+  void loginFunc() async {
     //Getting values from Controllers
     final String email = emailController.text;
     final String password = passwordController.text;
@@ -26,24 +27,24 @@ class _LoginState extends State<Login> {
     FirebaseAuth auth = FirebaseAuth.instance;
     // FireStroe Database Instance
     FirebaseFirestore firestore = FirebaseFirestore.instance;
-    try{
-      final UserCredential user =  await auth.signInWithEmailAndPassword(email: email, password: password);
-      final DocumentSnapshot snapshot =  await firestore.collection('users').doc(user.user!.uid).get();
+    try {
+      final UserCredential user = await auth.signInWithEmailAndPassword(
+          email: email, password: password);
+      final DocumentSnapshot snapshot =
+          await firestore.collection('users').doc(user.user!.uid).get();
       final mydata = snapshot.data();
 
       print("User is loged in");
       print(mydata);
       // Navigator.of(context).pushNamed(MyRoutes.afterLoginRoute);
-      Navigator.push(context, MaterialPageRoute(builder: (context) => AfterLogin()));
-      
+      Navigator.push(
+          context, MaterialPageRoute(builder: (context) => AfterLogin()));
+    } on FirebaseAuthException catch (e) {
+      print(e.message);
+      showDialog(context: context, builder: (BuildContext context) {
+        return AlertDialog(title: Text(e.message.toString()));
+      });
     }
-    catch(e){
-      print(e);
-    }
-
-    
-    
-    
   }
 
   @override
@@ -55,7 +56,7 @@ class _LoginState extends State<Login> {
             child: Padding(
               padding: const EdgeInsets.all(32.0),
               child: Column(
-                children: [                  
+                children: [
                   TextFormField(
                     controller: emailController,
                     decoration: InputDecoration(labelText: "Enter Email"),
@@ -63,13 +64,16 @@ class _LoginState extends State<Login> {
                   TextFormField(
                     controller: passwordController,
                     decoration: InputDecoration(labelText: "Enter Password"),
-                  ),                  
+                  ),
                   SizedBox(
                     height: 20,
                   ),
                   ElevatedButton(
-                    style: ButtonStyle(backgroundColor: MaterialStateProperty.all(Colors.lightGreen)),
-                      onPressed: loginFunc, child: Text("Login"))
+                      style: ButtonStyle(
+                          backgroundColor:
+                              MaterialStateProperty.all(Colors.lightGreen)),
+                      onPressed: loginFunc,
+                      child: Text("Login"))
                 ],
               ),
             ),
