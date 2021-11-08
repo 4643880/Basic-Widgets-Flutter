@@ -37,8 +37,8 @@ class _LoginState extends State<Login> {
       print("User is loged in");
       print(mydata);
       // Navigator.of(context).pushNamed(MyRoutes.afterLoginRoute);
-      Navigator.push(
-          context, MaterialPageRoute(builder: (context) => AfterLogin()));
+      Navigator.pushNamed(context, MyRoutes.afterLoginRoute);
+      
     } on FirebaseAuthException catch (e) {
       print(e.message);
       showDialog(context: context, builder: (BuildContext context) {

@@ -9,8 +9,7 @@ class Home  extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: DefaultTabController(      
+    return DefaultTabController(      
         length: 2,
          child: Scaffold(
           //  backgroundColor: Colors.orange,
@@ -34,8 +33,8 @@ class Home  extends StatelessWidget {
                Register(),
            ])  
          ),
-         ),
-    );
+         );
+    
   }
 }
 
